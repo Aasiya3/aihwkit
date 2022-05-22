@@ -12,18 +12,24 @@ The format is based on [Keep a Changelog], and this project adheres to
 * `Fixed` for any bug fixes.
 * `Security` in case of vulnerabilities.
 
-## Unreleased
+## [0.6.0] - 2022/05/16
 
 ### Added
 
 * Set weights can be used to re-apply the weight scaling omega. (\#360)
 * Out scaling factors can be learnt even if weight scaling omega was set to 0. (\#360)
 * Reverse up / down option for ``LinearStepDevice``. (\#361)
+* Generic Analog RNN classes (LSTM, RNN, GRU) uni or bidirectional. (\#358)
+* Added new ``PiecewiseStepDevice`` where the update-step response function can be arbitrarily defined by the user
+  in a piece-wise linear manner. It can be conveniently used to fit any experimental device data. (\#356)
+* Several enhancements to the public documentations: added a new section for hw-aware training, refreshed the reference API doc, 
+  and added the newly supported LSTM layers and the mapped conv layers. (\#374)
 
 ### Fixed
 
 * Legacy checkpoint load with alpha scaling. (\#360)
-* Re-application of weight scaling omega when loading checkpoints. (\#360) 
+* Re-application of weight scaling omega when loading checkpoints. (\#360)
+* Write noise was not correctly applied for CUDA if ``dw_min_std=0``. (\#356)
 
 ### Changed
 
@@ -82,7 +88,7 @@ The format is based on [Keep a Changelog], and this project adheres to
   types if set larger than zero. (\#318)
 * The use of generators for analog tiles of an ``AnalogModuleBase``. (\#320)
 * Digital bias is now accessable through ``MappingParameter``. (\#331)
-* The aihwkit documentation. New content around analog ai concepts, training presets, analog ai 
+* The aihwkit documentation. New content around analog ai concepts, training presets, analog ai
   optimizers, new references, and examples. (\#348)
 * The `weight_scaling_omega` can now be defined in the `rpu_config.mapping`. (\#353)
 
